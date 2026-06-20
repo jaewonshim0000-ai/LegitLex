@@ -1,0 +1,43 @@
+{
+  "_comment": "Maps each scraped JSON file (in data/) to the jurisdiction it covers. Add new entries when you scrape new PDFs. 'level' is one of: city, county, state, federal.",
+
+  "irvine_ordinances": {
+    "level": "city",
+    "city": "Irvine",
+    "county": "Orange County",
+    "state": "CA",
+    "country": "US",
+    "source_title": "Irvine Municipal Code",
+    "source_url": "https://library.municode.com/ca/irvine"
+  },
+
+  "irvine_zoning": {
+    "level": "city",
+    "city": "Irvine",
+    "county": "Orange County",
+    "state": "CA",
+    "country": "US",
+    "source_title": "Irvine Zoning Ordinance",
+    "source_url": "https://library.municode.com/ca/irvine"
+  },
+
+  "montgomery_ordinances": {
+    "level": "city",
+    "city": "Montgomery",
+    "county": "Montgomery County",
+    "state": "AL",
+    "country": "US",
+    "source_title": "Montgomery, AL Code of Ordinances",
+    "source_url": "https://library.municode.com/al/montgomery"
+  },
+
+  "montgomery_zoning": {
+    "level": "city",
+    "city": "Montgomery",
+    "county": "Montgomery County",
+    "state": "AL",
+    "country": "US",
+    "source_title": "Montgomery, AL Zoning.pdf",
+    "source_url": "https://www.montgomeryal.gov/home/showpublisheddocument/19330/639008735938930000"
+  }
+}

@@ -1,0 +1,48 @@
+# Keep the build context small. The Dockerfile only needs:
+#   lexlocator/, vectordb/, data_enriched/, requirements.txt
+# Everything below is dev-only, secret, or huge and is excluded.
+
+# secrets — NEVER bake keys into the image (set them as host secrets/env vars)
+.env
+.env.*
+
+# vcs / tooling
+.git
+.gitignore
+.claude
+.vscode
+
+# python caches
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# dev-only data the runtime doesn't need
+data/
+data_pdf/
+*.pdf
+*.zip
+*.xlsx
+*.csv
+snapshots/
+vmlogs/
+
+# UI backups / scratch from this project's history
+lexlocator/static_backup_*/
+_design_import/
+
+# trimmed-DB build artifacts (Fly ships the full vectordb/ instead)
+vectordb_deploy/
+data_deploy/
+_hf_upload.py
+
+# scrapers + one-off scripts (not needed to serve)
+scrape_*.py
+fetch_*.py
+add_municode_xlsx.py
+convert_oc_xlsx.py
+ordinance_scraper.py
+scrape_pdf_generic.py
+enrich.py
+query.py

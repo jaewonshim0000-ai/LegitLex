@@ -1,0 +1,17 @@
+{
+  "name": "LegitLex — hyper-local legal compliance",
+  "short_name": "LegitLex",
+  "description": "Know what's legal — right where you stand. GPS-aware, citation-backed answers from real city, county, state, federal, and Korean law.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#E9EBF4",
+  "theme_color": "#3F38C9",
+  "categories": ["utilities", "productivity", "government"],
+  "icons": [
+    { "src": "/static/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/static/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

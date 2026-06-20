@@ -1,0 +1,28 @@
+# Fly.io config for LegitLex. Run `fly launch --no-deploy` once to claim an app
+# name + region (it will update this file), then `fly deploy`.
+app = "legitlex"
+primary_region = "sea"
+
+[build]
+
+[http_service]
+  internal_port = 8000
+  force_https = true
+  auto_stop_machines = "stop"
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+  [[http_service.checks]]
+    interval = "30s"
+    timeout = "5s"
+    grace_period = "60s"
+    method = "GET"
+    path = "/api/health"
+
+# Full 93k-chunk vector store + the multilingual embedding model. 2 GB gives
+# headroom (HNSW index in RAM + model weights). Bump to 4gb if it OOMs.
+[[vm]]
+  size = "shared-cpu-1x"
+  memory = "2gb"
+  cpus = 1

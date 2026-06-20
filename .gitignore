@@ -1,0 +1,35 @@
+# secrets — NEVER commit
+.env
+.env.*
+
+# the vector DB is rebuilt in the Docker image; way too big for git (1.1 GB file)
+vectordb/
+vectordb_deploy/
+data_deploy/
+
+# raw scrape + dev-only big data (data_enriched/ IS committed — it builds the DB)
+data/
+data_pdf/
+*.pdf
+*.zip
+*.xlsx
+
+# generated / runtime
+snapshots/
+vmlogs/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# UI backups / scratch
+lexlocator/static_backup_*/
+_design_import/
+
+# local helper script
+_hf_upload.py
+
+# editor / tooling
+.claude/
+.vscode/
+.DS_Store

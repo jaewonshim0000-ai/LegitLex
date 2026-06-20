@@ -1,0 +1,669 @@
+[
+  {
+    "section_id": "14 CFR 89.1",
+    "section_name": "Definitions.",
+    "text": "The following definitions apply to this part. Declaration of compliance means a record submitted to the FAA by the producer of a standard remote identification unmanned aircraft or remote identification broadcast module to attest that all the requirements of subpart F of this part have been met. Home-built unmanned aircraft means an unmanned aircraft that an individual built solely for education or recreation.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.1"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.101",
+    "section_name": "Applicability.",
+    "text": "(a) Except as provided in paragraph (b) of this section, this subpart applies to the following: (1) Persons operating unmanned aircraft registered or required to be registered under part 47 or 48 of this chapter. (2) Persons operating foreign civil unmanned aircraft in the United States. (b) This subpart does not apply to unmanned aircraft operations under part 91 of this chapter that are transmitting ADS-B Out pursuant to § 91.225.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.101"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.105",
+    "section_name": "Remote identification requirement.",
+    "text": "Except as otherwise authorized by the Administrator or as provided in § 89.120, after September 16, 2023, no person may operate an unmanned aircraft within the airspace of the United States unless the operation meets the requirements of § 89.110 or § 89.115.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.105"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.110",
+    "section_name": "Operation of standard remote identification unmanned aircraft.",
+    "text": "Unless otherwise authorized by the Administrator, a person may comply with the remote identification requirement of § 89.105 by operating a standard remote identification unmanned aircraft under the following conditions: (a) Operational requirements. A person may operate a standard remote identification unmanned aircraft only if the person operating the standard remote identification unmanned aircraft ensures that all of the following conditions are met: (1) From takeoff to shutdown, the standard remote identification unmanned aircraft must broadcast the message elements of § 89.305. (2) The person manipulating the flight controls of the unmanned aircraft system must land the unmanned aircraft as soon as practicable if the standard remote identification unmanned aircraft is no longer broadcasting the message elements of § 89.305. (b) Standard remote identification unmanned aircraft requirements. A person may operate a standard remote identification unmanned aircraft only if the unmanned aircraft meets all of the following requirements: (1) Its serial number is listed on an FAA-accepted declaration of compliance, or the standard remote identification unmanned aircraft is covered by a design approval or production approval issued under part 21 of this chapter and meets the requirements of subpart F of this part. (2) Its remote identification equipment is functional and complies with the requirements of this part from takeoff to shutdown. (3) Its remote identification equipment and functionality have not been disabled. (4) The Certificate of Aircraft Registration of the unmanned aircraft used in the operation must include the serial number of the unmanned aircraft, as per applicable requirements of parts 47 and 48 of this chapter, or the serial number of the unmanned aircraft must be provided to the FAA in a notice of identification pursuant to § 89.130 prior to the operation.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.110"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.115",
+    "section_name": "Alternative remote identification.",
+    "text": "A person operating an unmanned aircraft that is not a standard remote identification unmanned aircraft may comply with the remote identification requirement of § 89.105 by meeting all of the requirements of either paragraph (a) or (b) of this section. (a) Remote identification broadcast modules. Unless otherwise authorized by the Administrator, a person may operate an unmanned aircraft that is not a standard remote identification unmanned aircraft if all of the following conditions are met: (1) Equipage. (i) The unmanned aircraft used in the operation must be equipped with a remote identification broadcast module that meets the requirements of § 89.320 and the serial number of the remote identification broadcast module must be listed on an FAA-accepted declaration of compliance. (ii) The Certificate of Aircraft Registration of the unmanned aircraft used in the operation must include the serial number of the remote identification broadcast module, as per applicable requirements of parts 47 and 48 of this chapter, or the serial number of the unmanned aircraft must be provided to the FAA in a notice of identification pursuant to § 89.130 prior to the operation. (2) Remote identification operating requirements. Unless otherwise authorized by the Administrator, a person may operate an unmanned aircraft under this paragraph (a) only if all of the following conditions are met: (i) From takeoff to shutdown, the person operating the unmanned aircraft must ensure that the remote identification broadcast module broadcasts the remote identification message elements of § 89.315 directly from the unmanned aircraft. (ii) The person manipulating the flight controls of the unmanned aircraft system must be able to see the unmanned aircraft at all times throughout the operation. (3) Pre-flight requirement. Prior to takeoff, the person manipulating the flight controls of the unmanned aircraft system must ensure the remote identification broadcast module is functioning in accordance with this subpart. (4) In-flight loss of remote identification broadcast. The person manipulating the flight controls of the unmanned aircraft system must land the unmanned aircraft as soon as practicable if the unmanned aircraft is no longer broadcasting the message elements of § 89.315. (b) Operations at FAA-recognized identification areas. Unless otherwise authorized by the Administrator, a person may operate an unmanned aircraft without remote identification equipment only if all of the following conditions are met: (1) The unmanned aircraft and the person manipulating the flight controls of the unmanned aircraft system remain within the boundaries of an FAA-recognized identification area throughout the operation; and (2) The person manipulating the flight controls of the unmanned aircraft system must be able to see the unmanned aircraft at all times throughout the operation.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.115"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.120",
+    "section_name": "Operations for aeronautical research or to show compliance with regulations.",
+    "text": "The Administrator may authorize operations without remote identification where the operation is solely for the purpose of aeronautical research or to show compliance with regulations.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.120"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.125",
+    "section_name": "Automatic Dependent Surveillance-Broadcast (ADS-B) Out prohibition.",
+    "text": "Automatic Dependent Surveillance-Broadcast (ADS-B) Out equipment cannot be used to comply with the remote identification requirements of this part.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.125"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.130",
+    "section_name": "Confirmation of identification.",
+    "text": "(a) Notification requirement. No person may operate a foreign registered civil unmanned aircraft with remote identification in the airspace of the United States unless, prior to the operation, the person submits a notice of identification in a form and manner acceptable to the Administrator. The notice of identification must include all of the following: (1) The name of the person operating the foreign registered civil unmanned aircraft in the United States, and, if applicable, the person's authorized representative. (2) The physical address of the person operating the foreign registered civil unmanned aircraft in the United States, and, if applicable, the physical address for the person's authorized representative. If the operator or authorized representative does not receive mail at the physical address, a mailing address must also be provided. (3) The telephone number(s) where the person operating the foreign registered civil unmanned aircraft in the United States, and, if applicable, the person's authorized representative can be reached while in the United States. (4) The email address of the person operating the foreign registered civil unmanned aircraft in the United States, and, if applicable, the email address of the person's authorized representative. (5) The unmanned aircraft manufacturer and model name. (6) The serial number of the unmanned aircraft or remote identification broadcast module. (7) The country of registration of the unmanned aircraft. (8) The registration number. (b) Issuance of a Confirmation of Identification. (1) The FAA will issue a Confirmation of Identification upon completion of the notification requirements provided in paragraph (a) of this section. (2) The filing of a notification under paragraph (a) of this section and the Confirmation of Identification issued under paragraph (b)(1) of this section do not have the effect of United States aircraft registration. (c) Proof of notification. No person may operate a foreign registered civil unmanned aircraft with remote identification in the United States unless the person obtains a Confirmation of Identification under paragraph (b)(1) of this section, maintains such Confirmation of Identification at the unmanned aircraft's control station, and produces the Confirmation of Identification when requested by the FAA or a law enforcement officer. (d) Requirement to maintain current information. The holder of a Confirmation of Identification must ensure that the information provided under paragraph (a) of this section remains accurate and must update the information prior to operating a foreign registered civil unmanned aircraft in the United States.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.130"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.201",
+    "section_name": "Applicability.",
+    "text": "This subpart prescribes procedural requirements to establish an FAA-recognized identification area.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.201"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.205",
+    "section_name": "Eligibility.",
+    "text": "Only the following persons are eligible to apply for the establishment of an FAA-recognized identification area under this subpart: (a) A community-based organization recognized by the Administrator. (b) An educational institution, including primary and secondary educational institutions, trade schools, colleges, and universities.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.205"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.210",
+    "section_name": "Requests for establishment of an FAA-recognized identification area.",
+    "text": "(a) Application. An eligible person requesting the establishment of an FAA-recognized identification area under this subpart may submit an application in a form and manner acceptable to the Administrator. (b) Required documentation. A request under this subpart must contain all of the following information: (1) The name of the eligible person under § 89.205. (2) The name of the individual making the request on behalf of the eligible person. (3) A declaration that the individual making the request has the authority to act on behalf of the community-based organization or educational institution. (4) The name and contact information of the primary point of contact for communications with the FAA. (5) The physical address of the proposed FAA-recognized identification area. (6) The location of the proposed FAA-recognized identification area in a form and manner prescribed by the Administrator. (7) If applicable, a copy of any existing letter of agreement regarding the flying site. (8) Description of the intended purpose of the FAA-recognized identification area and why the proposed FAA-recognized identification area is necessary for that purpose. (9) Any other information required by the Administrator.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.210"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.215",
+    "section_name": "Approval of FAA-recognized identification areas.",
+    "text": "The Administrator will assess applications for FAA-recognized identification areas and may require additional information or documentation, as needed, to supplement an application. The Administrator will approve or deny an application, and may take into consideration matters such as, but not limited to: (a) The existence of any FAA established flight or airspace restriction limiting the operation of unmanned aircraft systems, such as special use airspace designations under part 73 of this chapter, temporary flight restrictions issued under part 91 of this chapter, or any other special flight rule, restriction or regulation in this chapter limiting the operation of unmanned aircraft systems in the interest of safety, efficiency, national security and/or homeland security, which overlaps with the proposed FAA-recognized identification area. (b) The safe and efficient use of airspace by other aircraft. (c) The safety and security of persons or property on the ground. (d) The need for an FAA-recognized identification area in the proposed location and proximity of other FAA-recognized identification areas.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.215"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.220",
+    "section_name": "Amendment.",
+    "text": "(a) From the time of application until expiration or termination of an FAA-recognized identification area, any change to the information submitted in the application including but not limited to a change to the point of contact for the FAA-recognized identification area or a change to the FAA-recognized identification area's organizational affiliation must be submitted to the FAA within 10 calendar days of the change. (b) If the person who has been granted an FAA-recognized identification area wishes to change the geographic boundaries of the FAA-recognized identification area, the person must submit a request describing the change to the FAA for review. The geographic boundaries of the FAA-recognized identification area will not change unless the requested change is approved in accordance with § 89.215. (c) The establishment of an FAA-recognized identification area is subject to ongoing review in accordance with § 89.215 by the Administrator that may result in the termination of the FAA-recognized identification area pursuant to § 89.230 or modification of the FAA-recognized identification area.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.220"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.225",
+    "section_name": "Duration of an FAA-recognized identification area.",
+    "text": "(a) Duration. Except as otherwise provided in this subpart, an FAA-recognized identification area will be in effect for 48 calendar months after the date the FAA approves the request for establishment of an FAA-recognized identification area. (b) Renewal. A person wishing to renew an FAA-recognized identification area must submit a request for renewal no later than 120 days prior to the expiration of the FAA-recognized identification area in a form and manner acceptable to the Administrator. The Administrator may deny requests submitted after that deadline or requests submitted after the expiration.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.225"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.230",
+    "section_name": "Expiration and termination.",
+    "text": "(a) Expiration. Unless renewed, an FAA-recognized identification area issued under this subpart will expire automatically and will have no further force or effect as of the day that immediately follows the date of expiration. (b) Termination prior to expiration—(1) Termination by request. An individual identified as the point of contact for an approved FAA-recognized identification area may submit a request to the Administrator to terminate that FAA-recognized identification area. (2) Termination by FAA. (i) The FAA may terminate an FAA-recognized identification area upon a finding that— (A) The FAA-recognized identification area may pose a risk to aviation safety, public safety, homeland security, or national security; (B) The FAA-recognized identification area is no longer associated with a person eligible for an FAA-recognized identification area; or (C) The person who submitted a request for establishment of an FAA-recognized identification area provided false or misleading information during the submission, amendment, or renewal process. (ii) The Administrator will notify the primary point of contact of the decision to terminate the FAA-recognized identification area and the reasons for the termination. Except as provided in paragraph (c) of this section, if the FAA terminates an FAA-recognized identification area based upon a finding that the FAA-recognized identification area may pose a risk to aviation safety, public safety, homeland security, or national security, that area will no longer be eligible to be an FAA-recognized identification area for as long as those conditions remain in effect. (c) Petition to reconsider the FAA's decision to terminate an FAA-recognized identification area. No later than 30 calendar days after the termination of an FAA-recognized identification area, a person may petition the Administrator for reconsideration of the decision. The petition must state the reasons justifying the request for reconsideration and include any supporting documentation. Upon consideration of the information submitted by the petitioner, the Administrator will notify the petitioner of the decision on the request for reconsideration. (d) Inapplicability of part 13, subpart D, of this chapter. Part 13, subpart D, of this chapter does not apply to the procedures of paragraphs (b) and (c) of this section.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.230"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.301",
+    "section_name": "Applicability.",
+    "text": "This subpart prescribes the minimum message element set and minimum performance requirements for standard remote identification unmanned aircraft and remote identification broadcast modules.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.301"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.305",
+    "section_name": "Minimum message elements broadcast by standard remote identification unmanned aircraft.",
+    "text": "A standard remote identification unmanned aircraft must be capable of broadcasting the following remote identification message elements: (a) The identity of the unmanned aircraft, consisting of: (1) A serial number assigned to the unmanned aircraft by the person responsible for the production of the standard remote identification unmanned aircraft; or (2) A session ID. (b) An indication of the latitude and longitude of the control station. (c) An indication of the geometric altitude of the control station. (d) An indication of the latitude and longitude of the unmanned aircraft. (e) An indication of the geometric altitude of the unmanned aircraft. (f) An indication of the velocity of the unmanned aircraft. (g) A time mark identifying the Coordinated Universal Time (UTC) time of applicability of a position source output. (h) An indication of the emergency status of the unmanned aircraft.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.305"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.310",
+    "section_name": "Minimum performance requirements for standard remote identification unmanned aircraft.",
+    "text": "A standard remote identification unmanned aircraft must meet the following minimum performance requirements: (a) Control station location. The location of the control station of the unmanned aircraft must be generated and encoded into the message elements and must correspond to the location of the person manipulating the flight controls of the unmanned aircraft system. (b) Time mark. The time mark message element must be synchronized with all other remote identification message elements. (c) Self-testing and monitoring. (1) Prior to takeoff, the unmanned aircraft must automatically test the remote identification functionality and notify the person manipulating the flight controls of the unmanned aircraft system of the result of the test. (2) The unmanned aircraft must not be able to take off if the remote identification equipment is not functional. (3) The unmanned aircraft must continuously monitor the remote identification functionality from takeoff to shutdown and must provide notification of malfunction or failure to the person manipulating the flight controls of the unmanned aircraft system. (d) Tamper resistance. The unmanned aircraft must be designed and produced in a way that reduces the ability of a person to tamper with the remote identification functionality. (e) Error correction. The remote identification equipment must incorporate error correction in the broadcast of the message elements in § 89.305. (f) Interference considerations. The remote identification equipment must not interfere with other systems or equipment installed on the unmanned aircraft, and other systems or equipment installed on the unmanned aircraft must not interfere with the remote identification equipment. (g) Message broadcast. (1) The unmanned aircraft must be capable of broadcasting the message elements in § 89.305 using a non-proprietary broadcast specification and using radio frequency spectrum compatible with personal wireless devices in accordance with 47 CFR part 15, where operations may occur without an FCC individual license. (2) Any broadcasting device used to meet the requirements of this section must be integrated into the unmanned aircraft without modification to its authorized radio frequency parameters and designed to maximize the range at which the broadcast can be received, while complying with 47 CFR part 15 and any other applicable laws in effect as of the date the declaration of compliance is submitted to the FAA for acceptance. (h) Message elements performance requirements. (1) The reported geometric position of the unmanned aircraft and the control station must be accurate to within 100 feet of the true position, with 95 percent probability. (2) The reported geometric altitude of the control station must be accurate to within 15 feet of the true geometric altitude, with 95 percent probability. (3) The reported geometric altitude of the unmanned aircraft must be accurate to within 150 feet of the true geometric altitude, with 95 percent probability. (4) The unmanned aircraft must broadcast the latitude, longitude, and geometric altitude of the unmanned aircraft and its control station no later than 1.0 seconds from the time of measurement to the time of broadcast. (5) The unmanned aircraft must broadcast the message elements at a rate of at least 1 message per second. (i) Take-off limitation. The unmanned aircraft must not be able to take off unless it is broadcasting the message elements in § 89.305.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.310"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.315",
+    "section_name": "Minimum message elements broadcast by remote identification broadcast modules.",
+    "text": "Remote identification broadcast modules must be capable of broadcasting the following remote identification message elements: (a) The identity of the unmanned aircraft, consisting of the serial number assigned to the remote identification broadcast module by the person responsible for the production of the remote identification broadcast module. (b) An indication of the latitude and longitude of the unmanned aircraft. (c) An indication of the geometric altitude of the unmanned aircraft. (d) An indication of the velocity of the unmanned aircraft. (e) An indication of the latitude and longitude of the take-off location of the unmanned aircraft. (f) An indication of the geometric altitude of the take-off location of the unmanned aircraft. (g) A time mark identifying the Coordinated Universal Time (UTC) time of applicability of a position source output.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.315"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.320",
+    "section_name": "Minimum performance requirements for remote identification broadcast modules.",
+    "text": "Remote identification broadcast modules must meet the following minimum performance requirements: (a) Take-off location. The remote identification broadcast module must be capable of determining the take-off location of the unmanned aircraft. (b) Time mark. The time mark message element must be synchronized with all other remote identification message elements. (c) Self-testing and monitoring. (1) Prior to take-off, the remote identification broadcast module must automatically test the remote identification functionality and notify the person manipulating the flight controls of the unmanned aircraft system of the result of the test. (2) The remote identification broadcast module must continuously monitor the remote identification functionality from takeoff to shutdown and must provide notification of malfunction or failure to the person manipulating the flight controls of the unmanned aircraft system. (d) Tamper resistance. The remote identification broadcast module must be designed and produced in a way that reduces the ability of a person to tamper with the remote identification functionality. (e) Error correction. The remote identification broadcast module must incorporate error correction in the broadcast of the message elements in § 89.315. (f) Interference considerations. The remote identification broadcast module must not interfere with other systems or equipment installed on compatible unmanned aircraft, and other systems or equipment installed on compatible unmanned aircraft must not interfere with the remote identification equipment. (g) Message broadcast. (1) The remote identification broadcast module must be capable of broadcasting the message elements in § 89.315 using a non-proprietary broadcast specification and using radio frequency spectrum compatible with personal wireless devices in accordance with 47 CFR part 15, where operations may occur without an FCC individual license. (2) The remote identification broadcast module must be designed to maximize the range at which the broadcast can be received, while complying with 47 CFR part 15 and any other applicable laws in effect as of the date the declaration of compliance is submitted to the FAA for acceptance. (h) Message elements performance requirements. (1) The reported geometric position of the unmanned aircraft must be accurate to within 100 feet of the true position, with 95 percent probability. (2) The reported geometric altitude of the unmanned aircraft must be accurate to within 150 feet of the true geometric altitude, with 95 percent probability. (3) The reported geometric position of the take-off location must be accurate to within 100 feet of the true geometric position, with 95 percent probability. (4) The reported geometric altitude of the take-off location must be accurate to within 150 feet of the true geometric altitude, with 95 percent probability. (5) The remote identification broadcast module must broadcast the latitude, longitude, and geometric altitude of the unmanned aircraft no later than 1.0 seconds from the time of measurement to the time of broadcast. (6) The remote identification broadcast module must broadcast the message elements at a rate of at least 1 message per second.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.320"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.401",
+    "section_name": "Applicability.",
+    "text": "This subpart prescribes— (a) Requirements for means of compliance with subpart D of this part. (b) Procedural requirements for the submission and acceptance of means of compliance used in the design and production of standard remote identification unmanned aircraft or remote identification broadcast modules to ensure they meet the minimum performance requirements of this part. (c) Rules governing persons submitting means of compliance for FAA acceptance.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.401"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.405",
+    "section_name": "Submission of a means of compliance for FAA acceptance.",
+    "text": "(a) Eligibility. Any person may submit a means of compliance for acceptance by the FAA. (b) Required information. A person requesting acceptance of a means of compliance must submit the following information to the FAA in a form and manner acceptable to the Administrator: (1) The name of the person or entity submitting the means of compliance, the name of the main point of contact for communications with the FAA, the physical address, email address, and other contact information. (2) A detailed description of the means of compliance. (3) An explanation of how the means of compliance addresses all of the minimum performance requirements established in subpart D of this part so that any standard remote identification unmanned aircraft or remote identification broadcast module designed and produced in accordance with such means of compliance meets the remote identification requirements of this part. (4) Any substantiating material the person wishes the FAA to consider as part of the request. (c) Testing and validation. A means of compliance submitted for acceptance by the FAA must include testing and validation procedures for persons responsible for the production of standard remote identification unmanned aircraft or remote identification broadcast modules to demonstrate through analysis, ground test, or flight test, as appropriate, how the standard remote identification unmanned aircraft or the remote identification broadcast module performs its intended functions and meets the requirements in subpart D of this part, including any applicable FAA performance requirements for radio station operation.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.405"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.410",
+    "section_name": "Acceptance of a means of compliance.",
+    "text": "(a) A person requesting acceptance of a means of compliance must demonstrate to the Administrator that the means of compliance addresses all of the requirements of subparts D and E of this part, and that any standard remote identification unmanned aircraft or remote identification broadcast module designed and produced in accordance with such means of compliance would meet the performance requirements of subpart D of this part. (b) The Administrator will evaluate a means of compliance that is submitted to the FAA and may request additional information or documentation, as needed, to supplement the submission. (c) If the Administrator determines the person has demonstrated that the means of compliance meets the requirements of subparts D and E of this part, the FAA will notify the person that the Administrator has accepted the means of compliance.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.410"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.415",
+    "section_name": "Rescission.",
+    "text": "(a) Rescission of an FAA-accepted means of compliance. (1) A means of compliance is subject to ongoing review by the Administrator. The Administrator may rescind acceptance of a means of compliance if the Administrator determines that a means of compliance does not meet any or all of the requirements of subpart D or E of this part. (2) The Administrator will publish a notice of rescission in the Federal Register. (b) Inapplicability of part 13, subpart D, of this chapter. Part 13, subpart D, of this chapter does not apply to the procedures of paragraph (a) of this section.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.415"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.420",
+    "section_name": "Record retention.",
+    "text": "A person who submits a means of compliance that is accepted by the Administrator under this subpart must retain the following information for as long as the means of compliance is accepted plus an additional 24 calendar months, and must make available for inspection by the Administrator the following: (a) All documentation and substantiating data submitted to the FAA for acceptance of the means of compliance. (b) Records of all test procedures, methodology, and other procedures, as applicable. (c) Any other information necessary to justify and substantiate how the means of compliance enables compliance with the remote identification requirements of this part.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.420"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.501",
+    "section_name": "Applicability.",
+    "text": "(a) This subpart prescribes— (1) Requirements for the design and production of unmanned aircraft with remote identification produced for operation in the airspace of the United States. (2) Requirements for the design and production of remote identification broadcast modules. (3) Procedural requirements for the submission, acceptance, and rescission of declarations of compliance. (4) Rules governing persons submitting declarations of compliance for FAA acceptance under this part. (b) Except as provided in paragraph (c) of this section, this subpart applies to the design and production of all unmanned aircraft operated in the airspace of the United States. (c) Except for unmanned aircraft designed and produced to be standard remote identification unmanned aircraft, this subpart does not apply to the design or production of: (1) Home-built unmanned aircraft. (2) Unmanned aircraft of the United States Government. (3) Unmanned aircraft that weigh 0.55 pounds or less on takeoff, including everything that is on board or otherwise attached to the aircraft. (4) Unmanned aircraft designed or produced exclusively for the purpose of aeronautical research or to show compliance with regulations.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.501"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.505",
+    "section_name": "Serial numbers.",
+    "text": "No person may produce a standard remote identification unmanned aircraft under § 89.510 or § 89.515 or a remote identification broadcast module under § 89.520, unless the producer assigns to the unmanned aircraft or remote identification broadcast module a serial number that complies with ANSI/CTA-2063-A. ANSI/CTA-2063-A, Small Unmanned Aerial Systems Serial Numbers (September 2019) is incorporated by reference into this section with the approval of the Director of the Office of the Federal Register under 5 U.S.C. 552(a) and 1 CFR part 51. All approved material is available for inspection at the FAA's Office of Rulemaking (ARM-1), 800 Independence Avenue SW, Washington, DC 20590 (telephone 202-267-9677) and is available from Consumer Technology Association (CTA), 1919 South Eads Street, Arlington, VA 22202, CTA@CTA.tech, 703-907-7600 or at https://www.cta.tech. It is also available for inspection at the National Archives and Records Administration (NARA). For information on the availability of this material at NARA, email fedreg.legal@nara.gov, or go to www.archives.gov/federal-register/cfr/ibr-locations.html.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.505"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.510",
+    "section_name": "Production requirements for unmanned aircraft produced under a design approval or production approval issued under part 21 of this chapter.",
+    "text": "After September 16, 2022, no person may produce an unmanned aircraft for operation in the airspace of the United States under a design approval or production approval issued under part 21 of this chapter unless: (a) All applicable requirements of part 21 of this chapter are met; and (b) The unmanned aircraft is— (1) Designed and produced to meet the minimum performance requirements for standard remote identification unmanned aircraft established in § 89.310 in accordance with an FAA-accepted means of compliance; or (2) Equipped with Automatic Dependent Surveillance-Broadcast (ADS-B) Out equipment that meets the requirements of § 91.225 of this chapter.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.510"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.515",
+    "section_name": "Production requirements for unmanned aircraft without design approval or production approval issued under part 21 of this chapter.",
+    "text": "Except as provided in § 89.510, after September 16, 2022, no person may produce an unmanned aircraft for operation in the airspace of the United States unless— (a) The unmanned aircraft is designed and produced to meet the minimum performance requirements for standard remote identification unmanned aircraft established in § 89.310 in accordance with an FAA-accepted means of compliance; and (b) All of the following conditions are met: (1) Inspection requirements for production of standard unmanned aircraft. A person responsible for the production of standard remote identification unmanned aircraft must, upon request, allow the Administrator to inspect the person's facilities, technical data, and any standard remote identification unmanned aircraft the person produces, and to witness any tests necessary to determine compliance with this subpart. (2) Audit requirements. A person responsible for the production of standard remote identification unmanned aircraft must cause independent audits to be performed on a recurring basis, and additionally whenever the FAA provides notice of noncompliance or potential noncompliance, to demonstrate the unmanned aircraft listed under a declaration of compliance meet the requirements of this subpart. The person responsible for the production of standard remote identification unmanned aircraft must provide the results of all such audits to the FAA upon request. (3) Product support and notification. A person responsible for the production of standard remote identification unmanned aircraft must maintain product support and notification procedures to notify the public and the FAA of any defect or condition that causes an unmanned aircraft to no longer meet the requirements of this subpart, within 15 calendar days of the date the person becomes aware of the defect or condition.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.515"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.520",
+    "section_name": "Production requirements for remote identification broadcast modules.",
+    "text": "After April 21, 2021, no person may produce remote identification broadcast modules unless: (a) The remote identification broadcast module is designed and produced to meet the minimum performance requirements for remote identification broadcast modules established in § 89.320 in accordance with an FAA-accepted means of compliance; and (b) All of the following conditions are met: (1) Inspection requirements for production of remote identification broadcast modules. A person responsible for the production of remote identification broadcast modules must, upon request, allow the Administrator to inspect the person's facilities, technical data, and any remote identification broadcast modules the person produces, and to witness any tests necessary to determine compliance with this subpart. (2) Audit requirements. A person responsible for the production of remote identification broadcast modules must cause independent audits to be performed on a recurring basis, and additionally whenever the FAA provides notice of noncompliance or potential noncompliance, to demonstrate the remote identification broadcast modules listed under a declaration of compliance meet the requirements of this subpart. The person responsible for the production of remote identification broadcast modules must provide the results of all such audits to the FAA upon request. (3) Product support and notification. A person responsible for the production of remote identification broadcast modules must maintain product support and notification procedures to notify the public and the FAA of any defect or condition that causes the remote identification broadcast module to no longer meet the requirements of this subpart, within 15 calendar days of the date the person becomes aware of the defect or condition. (4) Instructions. A person responsible for the production of a remote identification broadcast module must make available instructions for installing and operating the remote identification broadcast module to any person operating an unmanned aircraft with the remote identification broadcast module.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [
+      "[Amdt. 89-1, 86 FR 4505, Jan. 15, 2021; 86 FR 13630, Mar. 10, 2021]"
+    ],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.520"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.525",
+    "section_name": "Labeling.",
+    "text": "(a) No person may produce a standard remote identification unmanned aircraft under § 89.515 unless it displays a label indicating that the unmanned aircraft meets the requirements of this part. The label must be in English and be legible, prominent, and permanently affixed to the unmanned aircraft. (b) No person may produce a remote identification broadcast module under § 89.520 unless it displays a label indicating that the equipment meets the requirements of this part. The label must be in English and be legible, prominent, and permanently affixed to the broadcast module.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.525"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.530",
+    "section_name": "Submission of a declaration of compliance for FAA acceptance.",
+    "text": "(a) Eligibility. A person responsible for the production of a standard remote identification unmanned aircraft under § 89.515 or a remote identification broadcast module under § 89.520 must submit a declaration of compliance for acceptance by the FAA. (b) Required information for standard remote identification unmanned aircraft. The person responsible for the production of a standard remote identification unmanned aircraft requesting acceptance of a declaration of compliance must declare that the unmanned aircraft complies with the requirements of this subpart by submitting a declaration of compliance to the FAA in a form and manner acceptable to the Administrator. The declaration must include at a minimum the following information: (1) The name, physical address, telephone number, and email address of the person responsible for production of the unmanned aircraft. (2) The unmanned aircraft's make and model. (3) The unmanned aircraft's serial number, or the range of serial numbers for which the person responsible for production is declaring compliance. (4) The FCC Identifier of the 47 CFR part 15-compliant radio frequency equipment used and integrated into the unmanned aircraft. (5) The means of compliance used in the design and production of the unmanned aircraft. (6) Whether the declaration of compliance is an initial declaration or an amended declaration, and if the declaration of compliance is an amended declaration, the reason for the amendment. (7) A declaration that the person responsible for the production of the unmanned aircraft: (i) Can demonstrate that the unmanned aircraft was designed and produced to meet the minimum performance requirements of § 89.310 by using an FAA-accepted means of compliance. (ii) Complies with the requirements of § 89.515(b). (8) A statement that 47 CFR part 15-compliant radio frequency equipment is used and is integrated into the unmanned aircraft without modification to its authorized radio frequency parameters. (c) Required information for remote identification broadcast modules. The person responsible for the production of a remote identification broadcast module under § 89.520 that is requesting acceptance of a declaration of compliance must declare that the remote identification broadcast module complies with the requirements of this subpart by submitting a declaration of compliance to the FAA in a form and manner acceptable to the Administrator. The declaration must include at a minimum the following information: (1) The name, physical address, telephone number, and email address of the person responsible for production of the remote identification broadcast module. (2) The remote identification broadcast module's make and model. (3) The remote identification broadcast module's serial number, or the range of serial numbers for which the person responsible for production is declaring compliance. (4) The FCC Identifier of the 47 CFR part 15-compliant radio frequency equipment used and integrated into the remote identification broadcast module. (5) The means of compliance used in the design and production of the remote identification broadcast module. (6) Whether the declaration of compliance is an initial declaration or an amended declaration, and if the declaration of compliance is an amended declaration, the reason for the amendment. (7) A declaration that the person responsible for the production of the remote identification broadcast module: (i) Can demonstrate that the remote identification broadcast module was designed and produced to meet the minimum performance requirements of § 89.320 by using an FAA-accepted means of compliance. (ii) Complies with the requirements of § 89.520(b). (8) A statement that 47 CFR part 15-compliant radio frequency equipment is used and is integrated into the remote identification broadcast module without modification to its authorized radio frequency parameters, and a statement that instructions have been provided for installation of 47 CFR part 15-compliant remote identification broadcast module without modification to the broadcast module's authorized radio frequency parameters.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.530"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.535",
+    "section_name": "Acceptance of a declaration of compliance.",
+    "text": "(a) The Administrator will evaluate a declaration of compliance that is submitted to the FAA and may request additional information or documentation, as needed, to supplement the declaration of compliance. (b) If the Administrator determines that the submitter has demonstrated compliance with the requirements of this subpart, the FAA will notify the submitter that the Administrator has accepted the declaration of compliance.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.535"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.540",
+    "section_name": "Rescission and reconsideration.",
+    "text": "(a) Rescission of the FAA's acceptance of a declaration of compliance. (1) A declaration of compliance is subject to ongoing review by the Administrator. The Administrator may rescind acceptance of a declaration of compliance under circumstances including but not limited to the following: (i) A standard remote identification unmanned aircraft or remote identification broadcast module listed under an accepted declaration of compliance does not meet the minimum performance requirements of § 89.310 or § 89.320. (ii) A previously FAA-accepted declaration of compliance does not meet a requirement of this subpart; or (iii) The FAA rescinds acceptance of the means of compliance listed in an FAA-accepted declaration of compliance. (2) The Administrator will notify the person who submitted the FAA-accepted declaration of compliance of any issue of noncompliance. (3) If the Administrator determines that it is in the public interest, prior to rescinding acceptance of a declaration of compliance, the Administrator may provide a reasonable period of time for the person who submitted the declaration of compliance to remediate the noncompliance. A failure to remediate the noncompliance constitutes cause for rescission of the FAA's acceptance of the declaration of compliance. (4) The Administrator will notify the person who submitted the declaration of compliance of the decision to rescind acceptance of the declaration of compliance by publishing a notice of rescission in the Federal Register. (b) Petition to reconsider the FAA's decision to rescind acceptance of a declaration of compliance. (1) The person who submitted the FAA-accepted declaration of compliance or any person adversely affected by the rescission of the Administrator's acceptance of a declaration of compliance may petition for a reconsideration of the decision by submitting a request to the FAA in a form and manner acceptable to the Administrator within 60 calendar days of the date of publication in the Federal Register of notification of rescission. (2) A petition to reconsider the rescission of the Administrator's acceptance of a declaration of compliance must show that the petitioner is an interested party and has been adversely affected by the decision of the FAA. The petition must also demonstrate at least one of the following: (i) The petitioner adduces a significant additional fact not previously presented to the FAA. (ii) The Administrator made a material error of fact in the decision to rescind acceptance of the declaration of compliance. (iii) The Administrator did not correctly interpret a law, regulation, or precedent. (3) Upon consideration of the information submitted by the petitioner, the Administrator will notify the petitioner and the person who submitted the declaration of compliance (if different) of the decision on whether to reinstate the Administrator's acceptance of the declaration of compliance. (c) Inapplicability of part 13, subpart D, of this chapter. Part 13, subpart D, of this chapter does not apply to the procedures of paragraphs (a) and (b) of this section.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.540"
+    },
+    "source_file": "federal"
+  },
+  {
+    "section_id": "14 CFR 89.545",
+    "section_name": "Record retention.",
+    "text": "A person who submits a declaration of compliance under this subpart that is accepted by the Administrator must retain the following information for as long as the standard remote identification unmanned aircraft or remote identification broadcast module listed on that declaration of compliance is produced plus an additional 24 calendar months, and must make available for inspection by the Administrator the following: (a) The means of compliance, all documentation, and substantiating data related to the means of compliance used. (b) Records of all test results. (c) Any other information necessary to demonstrate compliance with the means of compliance so that the standard remote identification unmanned aircraft or remote identification broadcast module meets the remote identification requirements and the design and production requirements of this part.",
+    "page_start": 0,
+    "breadcrumb": "Title 14 > 14 CFR Part 89 — Remote Identification of UAS",
+    "citations": [],
+    "topic": "drones",
+    "jurisdiction": {
+      "level": "federal",
+      "city": "",
+      "county": "",
+      "state": "",
+      "country": "US",
+      "source_title": "14 CFR Part 89 — Remote Identification of UAS",
+      "source_url": "https://www.ecfr.gov/current/title-14/section-89.545"
+    },
+    "source_file": "federal"
+  }
+]
