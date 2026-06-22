@@ -28,6 +28,7 @@ from fastapi.staticfiles import StaticFiles
 from .schemas import (
     AskRequest, AskResponse, Location, SignScanResponse,
     JurisdictionResponse, Citation, ComplaintResponse, CompareRequest,
+    PhotoScanResponse, PhotoLaw,
 )
 from . import complaint as complaint_module
 from .core import (
@@ -36,7 +37,7 @@ from .core import (
 )
 from . import llm
 from .geo import reverse_geocode
-from .vision import scan_sign as scan_sign_impl
+from .vision import analyze_photo as analyze_photo_impl
 from .snapshot import create_snapshot, snapshot_path
 
 
@@ -332,38 +333,41 @@ async def compare(req: CompareRequest):
 # Scan sign (multipart upload)
 # ---------------------------------------------------------------------------
 
-@app.post("/api/scan-sign", response_model=SignScanResponse)
-async def scan_sign(
+@app.post("/api/scan-photo", response_model=PhotoScanResponse)
+async def scan_photo(
     image: UploadFile = File(...),
     lat: Optional[float] = Form(None),
     lng: Optional[float] = Form(None),
     city: str = Form(""),
+    county: str = Form(""),
     state: str = Form(""),
+    country: str = Form("US"),
 ):
+    """Photo in → plain-language list of laws that apply to what's in it."""
     if not has_api_key():
         raise HTTPException(
             status_code=400,
-            detail="No LLM API key set on the server. Add OPENROUTER_API_KEY to .env.",
+            detail="No LLM API key set on the server. Add ANTHROPIC_API_KEY to .env.",
         )
 
     if lat is not None and lng is not None and not city:
         location = reverse_geocode(lat, lng)
     else:
-        location = Location(city=city, state=state, lat=lat, lng=lng)
+        location = Location(city=city, county=county, state=state,
+                            country=country or "US", lat=lat, lng=lng)
 
     data = await image.read()
     if not data:
         raise HTTPException(status_code=400, detail="Empty image upload.")
 
-    result = scan_sign_impl(data, location)
-    return SignScanResponse(
-        sign_text=result["sign_text"],
-        extracted_rule=result["extracted_rule"],
-        verified_against_code=result["verified_against_code"],
-        matching_citations=result["matching_citations"],
-        note=("Sign appears official." if result["appears_official"]
-              else "Sign may be unofficial, private, or handmade."),
+    result = analyze_photo_impl(data, location)
+    return PhotoScanResponse(
+        scene=result["scene"],
+        summary=result["summary"],
+        laws=[PhotoLaw(topic=l["topic"], explanation=l["explanation"],
+                       citation=l["citation"]) for l in result["laws"]],
         location=location,
+        retrieved=result["retrieved"],
         timestamp_utc=datetime.now(timezone.utc).isoformat(),
     )
 

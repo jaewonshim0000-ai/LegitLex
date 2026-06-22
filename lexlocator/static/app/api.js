@@ -86,16 +86,17 @@
     };
   }
 
-  function adaptSign(resp) {
+  function adaptPhoto(resp) {
+    const byId = indexRetrieved(resp.retrieved);
     return {
-      sign_text: resp.sign_text || '',
-      extracted_rule: resp.extracted_rule || '',
-      appears_official: /official/i.test(resp.note || ''),
-      verified_against_code: !!resp.verified_against_code,
-      note: resp.note || '',
-      matching_citations: (resp.matching_citations || []).map((c) =>
-        adaptCitation(c, null)
-      ),
+      scene: resp.scene || '',
+      summary: resp.summary || '',
+      laws: (resp.laws || []).map((l) => ({
+        topic: l.topic || '',
+        explanation: l.explanation || '',
+        citation: adaptCitation(l.citation || {}, byId),
+      })),
+      retrieved: resp.retrieved || [],
       timestamp_utc: resp.timestamp_utc || '',
     };
   }
@@ -121,22 +122,24 @@
     return adaptAsk(resp, question, { activity, speed });
   }
 
-  // ── Scan sign ───────────────────────────────────────────────────────────────
-  async function scanSign(file, location) {
+  // ── Scan photo → relevant laws in plain language ────────────────────────────
+  async function scanPhoto(file, location) {
     const fd = new FormData();
     fd.append('image', file);
     if (location) {
       if (location.lat != null) fd.append('lat', location.lat);
       if (location.lng != null) fd.append('lng', location.lng);
       if (location.city) fd.append('city', location.city);
+      if (location.county) fd.append('county', location.county);
       if (location.state) fd.append('state', location.state);
+      if (location.country) fd.append('country', location.country);
     }
-    const r = await fetch('/api/scan-sign', { method: 'POST', body: fd });
+    const r = await fetch('/api/scan-photo', { method: 'POST', body: fd });
     if (!r.ok) {
       const e = await r.json().catch(() => ({ detail: r.statusText }));
       throw new Error(e.detail || 'scan failed');
     }
-    return adaptSign(await r.json());
+    return adaptPhoto(await r.json());
   }
 
   // ── Analyze complaint (file and/or pasted text) ─────────────────────────────
@@ -202,14 +205,14 @@
     checkHealth,
     geocode,
     ask,
-    scanSign,
+    scanPhoto,
     analyzeComplaint,
     compare,
     jurisdiction,
     coverage,
     snapshotUrl,
     adaptAsk,
-    adaptSign,
+    adaptPhoto,
   };
 
   // ── Records: a private, on-device evidence trail (localStorage) ─────────────

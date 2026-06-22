@@ -55,13 +55,13 @@ function CameraScreen({ onCapture, onClose }) {
 
         <div className="ll-cam-top">
           <button className="ll-cam-x" onClick={onClose}><Icon name="cross" size={20} color="#fff" /></button>
-          <div className="ll-cam-mode">SCAN SIGN</div>
+          <div className="ll-cam-mode">PHOTO → LAWS</div>
           <button className="ll-cam-x"><Icon name="bolt" size={20} color="#fff" /></button>
         </div>
 
         <div className="ll-cam-frame">
           <span className="c tl" /><span className="c tr" /><span className="c bl" /><span className="c br" />
-          <div className="ll-cam-hint">Center the posted sign in the frame</div>
+          <div className="ll-cam-hint">Point at anything — a scooter, a sign, a dog off-leash, a parked car</div>
         </div>
 
         <div className="ll-cam-bottom">
@@ -71,7 +71,7 @@ function CameraScreen({ onCapture, onClose }) {
             <button className="ll-cam-shutter" onClick={shoot}><span /></button>
             <button className="ll-cam-gallery" onClick={shoot}><Icon name="refresh" size={22} color="#fff" /></button>
           </div>
-          <div className="ll-cam-tip">We read the text, then cross-check it against the official code.</div>
+          <div className="ll-cam-tip">AI reads the photo, then lists the local laws that apply — in plain English.</div>
         </div>
 
         <input ref={camRef} type="file" accept="image/*" capture="environment" style={{ display: 'none' }} onChange={onFile} />
@@ -83,84 +83,99 @@ function CameraScreen({ onCapture, onClose }) {
   );
 }
 
-// ── Scan result ──────────────────────────────────────────────────────────────
+// ── Scan result: photo → relevant laws in plain language ─────────────────────
 function ScanResultScreen({ onBack, onSnapshot, onRescan, onNav }) {
-  const live = window.LL_LIVE && window.__signFile;
-  const [d, setD] = React.useState(live ? null : window.SIGN_SCAN);
+  const [d, setD] = React.useState(null);
+  const [err, setErr] = React.useState('');
   const photoURL = window.__signFileURL;
 
-  // Live: send the captured photo to Claude vision + cross-reference the code.
   React.useEffect(() => {
-    if (!live) return;
     let alive = true;
-    window.LL_API.scanSign(window.__signFile, window.LOCATION)
+    if (!window.LL_API || !window.LL_API.scanPhoto || !window.__signFile) {
+      setErr('No photo to analyze. Take or upload a photo first.');
+      return;
+    }
+    window.LL_API.scanPhoto(window.__signFile, window.LOCATION)
       .then((res) => { if (alive) setD(res); })
-      .catch((e) => { console.warn('Live scan failed; using bundled data.', e); if (alive) setD(window.SIGN_SCAN); });
+      .catch((e) => { if (alive) setErr(e.message || 'Could not analyze the photo.'); });
     return () => { alive = false; };
   }, []);
 
-  if (!d) {
+  if (!d && !err) {
     return (
       <Screen tab="scan" onNav={onNav}>
-        <AppBar left={<BackBtn onClick={onBack} label="Scan" />} title="Reading sign…" />
+        <AppBar left={<BackBtn onClick={onBack} label="Scan" />} title="Reading your photo…" />
         <div className="ll-think" style={{ paddingTop: 70 }}>
           <Spinner size={30} color="var(--primary)" />
-          <div className="ll-think-q">Reading the sign &amp; cross-checking the official code…</div>
+          <div className="ll-think-q">Looking at your photo &amp; finding the laws that apply…</div>
         </div>
       </Screen>
     );
   }
 
+  const laws = (d && d.laws) || [];
+
   return (
     <Screen tab="scan" onNav={onNav}>
-      <AppBar left={<BackBtn onClick={onBack} label="Scan" />} title="Sign result"
+      <AppBar left={<BackBtn onClick={onBack} label="Scan" />} title="Laws in this photo"
         right={<IconBtn name="refresh" title="Rescan" onClick={onRescan} />} />
       <Scroll padBottom={96}>
         <div className="ll-scan-cap">
           <div className="ll-scan-photo">
             {photoURL
-              ? <img src={photoURL} alt="Captured sign" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+              ? <img src={photoURL} alt="Your photo" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
               : <div className="ll-scan-photo-scene"><StreetSign scale={0.62} /></div>}
             <span className="ll-scan-photo-tag"><Icon name="camera" size={12} /> Captured</span>
           </div>
-          <div className={'ll-verified' + (d.verified_against_code ? ' is-yes' : ' is-no')}>
-            <span className="ll-verified-ic">
-              <Icon name={d.verified_against_code ? 'shield' : 'info'} size={22}
-                color={d.verified_against_code ? 'var(--yes)' : 'var(--warn)'} />
-            </span>
-            <div>
-              <strong>{d.verified_against_code ? 'Verified against code' : 'Not verified'}</strong>
-              <span>{d.note}</span>
-            </div>
-          </div>
         </div>
 
-        <SectionLabel>What the sign says</SectionLabel>
-        <Card>
-          <div className="ll-signtext">{d.sign_text}</div>
-          <div className="ll-signrule">
-            <Icon name="edit" size={15} color="var(--ink-3)" />
-            <span><strong>Rule:</strong> {d.extracted_rule}</span>
-          </div>
-        </Card>
-
-        <SectionLabel right={<span className="ll-seclabel-n">{d.matching_citations.length}</span>}>
-          Matching ordinance
-        </SectionLabel>
-        {d.matching_citations.length === 0 ? (
-          <Card className="ll-nocite">
-            <Icon name="info" size={18} color="var(--ink-3)" />
-            <span>No matching ordinance was found in the official code for your location. This sign may be private, outdated, or its rule lives in a code we haven’t ingested yet.</span>
+        {err ? (
+          <Card className="ll-nocite" style={{ marginTop: 14 }}>
+            <Icon name="info" size={18} color="var(--warn)" />
+            <span>{err}</span>
           </Card>
         ) : (
-          <div className="ll-cites">
-            {d.matching_citations.map((c, i) => <CitationCard key={i} c={c} defaultOpen={true} />)}
-          </div>
+          <React.Fragment>
+            <SectionLabel>What we see</SectionLabel>
+            <Card>
+              <p style={{ margin: 0, lineHeight: 1.5 }}>{d.scene || '—'}</p>
+              {d.summary && (
+                <div className="ll-signrule" style={{ marginTop: 10 }}>
+                  <Icon name="scales" size={15} color="var(--ink-3)" />
+                  <span>{d.summary}</span>
+                </div>
+              )}
+            </Card>
+
+            <SectionLabel right={<span className="ll-seclabel-n">{laws.length}</span>}>
+              {laws.length ? 'Laws that may apply' : 'Relevant laws'}
+            </SectionLabel>
+            {laws.length === 0 ? (
+              <Card className="ll-nocite">
+                <Icon name="info" size={18} color="var(--ink-3)" />
+                <span>No specific local law in our dataset clearly applies to what's in this photo. Try a clearer photo, or ask a question directly.</span>
+              </Card>
+            ) : (
+              <div className="ll-cites">
+                {laws.map((law, i) => (
+                  <div key={i} className="ll-photolaw">
+                    <div className="ll-photolaw-head">
+                      <span className="ll-photolaw-ic"><Icon name="scales" size={16} color="var(--primary)" /></span>
+                      <strong>{law.topic}</strong>
+                    </div>
+                    <p className="ll-photolaw-exp">{law.explanation}</p>
+                    {law.citation && law.citation.section_id ? (
+                      <CitationCard c={law.citation} index={i} defaultOpen={false} />
+                    ) : null}
+                  </div>
+                ))}
+              </div>
+            )}
+          </React.Fragment>
         )}
 
         <div className="ll-verdict-actions">
-          <Button variant="primary" icon="shield" full size="lg" onClick={onSnapshot}>Save snapshot</Button>
-          <Button variant="ghost" icon="camera" full onClick={onRescan}>Scan another sign</Button>
+          <Button variant="ghost" icon="camera" full onClick={onRescan}>Scan another photo</Button>
         </div>
         <Disclaimer compact />
       </Scroll>

@@ -231,8 +231,8 @@ function AskScreen({ onAsk, onScan, onComplaint, onCompare, onOpenLoc, onNav }) 
         <button className="ll-scanbanner" onClick={onScan}>
           <span className="ll-scanbanner-ic"><Icon name="camera" size={22} /></span>
           <span className="ll-scanbanner-txt">
-            <strong>See a posted sign?</strong>
-            <span>Photograph it — we’ll verify it against the real code.</span>
+            <strong>Not sure what’s legal? Snap a photo.</strong>
+            <span>A scooter, a sign, a parked car — AI lists the laws that apply.</span>
           </span>
           <Icon name="arrowR" size={18} style={{ opacity: 0.6 }} />
         </button>
@@ -327,19 +327,70 @@ function RiskMeter({ verdict, severity }) {
 }
 
 // ── #3: low-confidence / unknown "verify before relying" nudge ───────────────
-function VerifyNudge({ verdict, confidence }) {
+// ── #3: "Ask a Lawyer" escalation — when confidence is low, hand the user to a
+// real human (legal aid, the bar, the relevant agency) instead of pretending. ──
+const PRACTICE_AREAS = [
+  { re: /scooter|bike|bicycle|e-?bike|moped|vehicle|\bcar\b|parking|parked|driv|traffic|\broad\b|helmet|sidewalk|speed|licen[cs]e plate/i, label: 'traffic or transportation' },
+  { re: /\bdog\b|\bcat\b|\bpet\b|animal|leash|bark/i, label: 'animal-law' },
+  { re: /noise|neighbo|nuisance|fence|propert|trespass|\btree\b|smell|garbage|waste/i, label: 'property or municipal' },
+  { re: /business|vendor|\bfood\b|permit|zoning|short-?term rental|airbnb|signage|\bsign\b/i, label: 'business or land-use' },
+  { re: /tenant|landlord|lease|evict|\brent\b|deposit/i, label: 'landlord–tenant' },
+  { re: /alcohol|smok|tobacco|\bdrug\b|cannabis|\bvap/i, label: 'regulatory' },
+];
+function practiceArea(q) {
+  const hit = PRACTICE_AREAS.find(p => p.re.test(q || ''));
+  return hit ? hit.label : '';
+}
+
+const ESCALATION = {
+  US: [
+    { kind: 'Legal aid', name: 'LawHelp.org', detail: 'Free & low-cost legal help near you', url: 'https://www.lawhelp.org/' },
+    { kind: 'Find a lawyer', name: 'American Bar Association — Find Legal Help', detail: 'Lawyer referral & free legal answers by state', url: 'https://www.americanbar.org/groups/legal_services/flh-home/' },
+    { kind: 'Government & code enforcement', name: 'USA.gov — State & Local Government', detail: 'Find your city/county office to report or confirm', url: 'https://www.usa.gov/local-governments' },
+    { kind: 'Community help line', name: 'Dial 211 (United Way)', detail: 'Free phone referral to local services & legal aid', url: 'tel:211' },
+  ],
+  KR: [
+    { kind: '법률구조 · Legal aid', name: '대한법률구조공단 (Korea Legal Aid Corporation)', detail: '무료 법률상담 · 전화 국번없이 132', url: 'https://www.klac.or.kr/' },
+    { kind: '변호사 찾기 · Find a lawyer', name: '대한변호사협회 (Korean Bar Association)', detail: '변호사 검색 및 상담 연결', url: 'https://www.koreanbar.or.kr/' },
+    { kind: '민원·신고 · Government', name: '국민신문고 (e-People)', detail: '행정기관 민원·신고 · 정부민원 110', url: 'https://www.epeople.go.kr/' },
+  ],
+};
+
+function AskLawyer({ verdict, confidence, question }) {
   const unknown = verdict === 'unknown';
   const low = unknown || (confidence || 0) < 0.55;
   if (!low) return null;
+  const country = (window.LOCATION.country || 'US') === 'KR' ? 'KR' : 'US';
+  const list = ESCALATION[country];
+  const pct = Math.round((confidence || 0) * 100);
+  const area = practiceArea(question);
+  const who = area ? `a ${area} attorney` : 'a lawyer';
   return (
-    <div className="ll-verify">
-      <span className="ll-verify-ic"><Icon name="info" size={16} color="var(--warn)" /></span>
-      <div className="ll-verify-txt">
-        <strong>{unknown ? 'No clear answer in the retrieved law' : 'Lower confidence — verify before you rely on this'}</strong>
-        <span>{unknown
-          ? 'The dataset may not cover this, or the wording differs. Try rephrasing, check the official code, or consult a professional.'
-          : 'The retrieved sections only partly settle this. Re-read the cited text below, and get professional advice for anything consequential.'}</span>
+    <div className="ll-escalate">
+      <div className="ll-escalate-head">
+        <span className="ll-escalate-ic"><Icon name="scales" size={18} color="var(--primary)" /></span>
+        <div>
+          <strong>Check with a person before you rely on this</strong>
+          <span className="ll-escalate-sub">
+            {unknown
+              ? 'There’s no clear answer in the law we have for your area. '
+              : `This answer has ${pct}% confidence. `}
+            Consider contacting {who} or your local agency.
+          </span>
+        </div>
       </div>
+      <div className="ll-escalate-list">
+        {list.map((r, i) => (
+          <a key={i} className="ll-escalate-row" href={r.url}
+             target="_blank" rel="noopener noreferrer">
+            <span className="ll-escalate-kind">{r.kind}</span>
+            <span className="ll-escalate-name">{r.name}</span>
+            <span className="ll-escalate-detail">{r.detail}</span>
+            <Icon name="chevron" size={15} className="ll-escalate-chev" />
+          </a>
+        ))}
+      </div>
+      <p className="ll-escalate-foot">Starting points, not endorsements. LegitLex gives legal information, not legal advice.</p>
     </div>
   );
 }
@@ -422,7 +473,7 @@ function VerdictScreen({ qid, ctx, onBack, onSnapshot, onFollow, onCite }) {
           <p>{v.answer}</p>
         </div>
 
-        <VerifyNudge verdict={v.verdict} confidence={v.confidence} />
+        <AskLawyer verdict={v.verdict} confidence={v.confidence} question={v.q} />
 
         {hasCtx && (
           <div className="ll-ctxnote">

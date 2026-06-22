@@ -1,6 +1,9 @@
-# LegitLex — single container: FastAPI serves the UI + the API. The vector DB is
-# REBUILT from the committed source JSON at image-build time, so the 1.1 GB DB
-# never needs to live in git — the repo stays GitHub-friendly and deploys to Fly.
+# LegitLex — single container: FastAPI serves the UI + the API. The PREBUILT
+# vector DB and the embedding models are baked in, so the image builds in a few
+# minutes (no in-image ingest) and boots ready to answer.
+#
+# NOTE: deploy from the terminal (`fly deploy`) — it ships your local vectordb/.
+# The web/GitHub build can't use this (the 1.4 GB DB isn't in git).
 FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1 \
@@ -22,16 +25,9 @@ RUN pip install -r requirements.txt
 # Pre-download both embedding models (US = all-MiniLM, Korea = multilingual).
 RUN python -c "from sentence_transformers import SentenceTransformer as S; S('all-MiniLM-L6-v2'); S('paraphrase-multilingual-MiniLM-L12-v2')"
 
-# App code + source law JSON + the ingest scripts.
+# App code + the PREBUILT vector store (shipped from your local disk).
 COPY lexlocator ./lexlocator
-COPY ingest.py ingest_kr.py ./
-COPY data_enriched ./data_enriched
-
-# Build the vector store INSIDE the image from the committed JSON. This embeds
-# ~93k US chunks (laws) + ~1k Korean chunks (laws_kr). Cached by Docker unless
-# data_enriched/ changes, so repeat deploys are fast.
-RUN python ingest.py --reset --data-dir data_enriched --db vectordb \
- && python ingest_kr.py --reset --data-dir data_enriched --db vectordb
+COPY vectordb ./vectordb
 
 # Let the runtime user read the app and write ChromaDB's lock/WAL files.
 RUN chmod -R a+rwX /app/vectordb && chmod -R a+rX /app/lexlocator

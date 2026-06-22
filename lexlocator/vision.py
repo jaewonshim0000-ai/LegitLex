@@ -1,70 +1,124 @@
-"""Sign scanning via Claude vision.
+"""Photo → relevant laws, in plain language.
 
 Pipeline:
-  1. User uploads photo of a posted sign.
-  2. Claude reads the image, extracts visible text and the rule it expresses.
-  3. We RAG-search the extracted rule against the official code for the user's
-     location. If a matching ordinance exists, the sign is considered
-     "verified against code." If not, it may be private/outdated/unofficial.
+  1. User takes/uploads a photo of a situation (riding an e-scooter, a dog off
+     leash, a parked car, a campfire on a beach, a posted sign, …).
+  2. Claude vision describes the legally-relevant things in the photo and
+     proposes search phrases.
+  3. We RAG-search those against the official code for the user's location.
+  4. Claude turns ONLY the retrieved law into a short, plain-language list of
+     the laws that apply to what's in the photo — each with its citation.
 """
 from __future__ import annotations
 import base64
 import io
 from typing import Optional
 
-from .schemas import Location, Citation, SignScanResponse
+from .schemas import Location, Citation
 from .core import retrieve, hits_to_retrieved
 from . import llm
 
 
-SIGN_READER_TOOL = {
-    "name": "report_sign",
-    "description": "Report what is on the sign visible in the image.",
+# --- Pass 1: vision — what's in the photo? ----------------------------------
+
+SCENE_TOOL = {
+    "name": "describe_scene",
+    "description": "Describe what is in the photo, focusing on anything with "
+                   "legal relevance (activities, vehicles, animals, objects, "
+                   "signs, the setting/place).",
     "parameters": {
         "type": "object",
         "properties": {
-            "sign_text": {
+            "scene": {
                 "type": "string",
-                "description": "All readable text on the sign, transcribed verbatim.",
+                "description": "1-2 plain-English sentences describing what is "
+                               "happening in the photo.",
             },
-            "extracted_rule": {
-                "type": "string",
-                "description": (
-                    "Plain-English statement of the rule the sign communicates. "
-                    "E.g. 'No parking between 2am and 6am' or 'E-bikes prohibited "
-                    "on this path.' Empty string if no rule is communicated."
-                ),
+            "subjects": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "The legally-relevant things in the photo: "
+                               "activities, objects, vehicles, animals, place "
+                               "type. E.g. ['riding an electric scooter', 'on a "
+                               "public sidewalk', 'no helmet'].",
             },
-            "appears_official": {
-                "type": "boolean",
-                "description": (
-                    "True if the sign LOOKS like an official municipal sign "
-                    "(standardized format, agency mark, regulatory symbols). "
-                    "False if it looks handwritten, private, or improvised."
-                ),
-            },
-            "search_keywords": {
-                "type": "string",
-                "description": (
-                    "A short search phrase to cross-reference against municipal "
-                    "code. E.g. 'parking overnight curfew' or 'e-bike trail "
-                    "prohibition'."
-                ),
+            "queries": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "2-4 short search phrases to find laws that could "
+                               "apply. E.g. ['electric scooter sidewalk', "
+                               "'scooter helmet requirement'].",
             },
         },
-        "required": ["sign_text", "extracted_rule", "appears_official",
-                     "search_keywords"],
+        "required": ["scene", "subjects", "queries"],
     },
 }
 
+SCENE_SYSTEM = """You are looking at a photo for a user who wants to know which
+local laws apply to what's in it. Call `describe_scene`. Be concrete about the
+activity, objects, and setting — those drive which laws are relevant. If the
+photo is a posted sign, transcribe its rule as part of the scene."""
 
-SIGN_SYSTEM = """You are reading a photograph of a posted sign for a user who
-wants to know if its rule is legally enforceable in their location.
 
-Call `report_sign` with what you see. Be literal: transcribe text exactly,
-and only summarize the rule the sign actually states. If the sign has no
-rule (a name, a logo, a direction arrow), say so by setting extracted_rule
-to empty.
+# --- Pass 2: grounded plain-language laws -----------------------------------
+
+LAWS_TOOL = {
+    "name": "relevant_laws",
+    "description": "List the laws most relevant to what's in the photo, using "
+                   "ONLY the retrieved law sections, explained simply.",
+    "parameters": {
+        "type": "object",
+        "properties": {
+            "summary": {
+                "type": "string",
+                "description": "1-2 sentence plain-language overview of the legal "
+                               "picture for this photo. If no retrieved law is "
+                               "relevant, say so plainly.",
+            },
+            "laws": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "topic": {"type": "string",
+                                  "description": "Short title, e.g. 'Helmet "
+                                  "required for e-scooter riders under 18'."},
+                        "explanation": {"type": "string",
+                                        "description": "1-2 sentences, simple "
+                                        "language: what this law means for the "
+                                        "situation in the photo."},
+                        "level": {"type": "string",
+                                  "enum": ["city", "county", "state", "federal",
+                                           "national", "unknown"]},
+                        "jurisdiction": {"type": "string"},
+                        "section_id": {"type": "string"},
+                        "section_name": {"type": "string"},
+                        "source_url": {"type": "string"},
+                        "page_start": {"type": "integer"},
+                    },
+                    "required": ["topic", "explanation", "section_id"],
+                },
+                "description": "The relevant laws. Empty if none of the retrieved "
+                               "sections actually apply. Never invent a section.",
+            },
+        },
+        "required": ["summary", "laws"],
+    },
+}
+
+LAWS_SYSTEM = """You explain the law in plain language to an ordinary person.
+
+You are given: a description of what's in a user's photo, their location, and a
+set of law sections retrieved from official city/county/state/federal (or Korean
+national) codes for that location.
+
+Call `relevant_laws`. Rules:
+1. Use ONLY the retrieved sections. Never invent a section number or a law.
+2. Pick the sections that actually relate to what's in the photo. Skip the rest.
+3. Write each explanation in simple, everyday language — no legalese — and tie it
+   to the photo ("Because you're riding an e-scooter on the sidewalk, …").
+4. If none of the retrieved sections genuinely apply, return an empty `laws`
+   list and say so in `summary`.
 """
 
 
@@ -77,11 +131,10 @@ def _detect_media_type(image_bytes: bytes) -> str:
         return "image/gif"
     if image_bytes[:4] == b"RIFF" and image_bytes[8:12] == b"WEBP":
         return "image/webp"
-    return "image/jpeg"  # best guess
+    return "image/jpeg"
 
 
 def _maybe_resize(image_bytes: bytes, max_dim: int = 1600) -> bytes:
-    """Downsize huge phone photos so the API call stays cheap and fast."""
     try:
         from PIL import Image
         img = Image.open(io.BytesIO(image_bytes))
@@ -90,68 +143,114 @@ def _maybe_resize(image_bytes: bytes, max_dim: int = 1600) -> bytes:
             return image_bytes
         scale = max_dim / max(w, h)
         img = img.resize((int(w * scale), int(h * scale)))
-        out = io.BytesIO()
-        fmt = "JPEG" if img.mode == "RGB" else "PNG"
-        if fmt == "JPEG" and img.mode != "RGB":
+        if img.mode not in ("RGB", "L"):
             img = img.convert("RGB")
-        img.save(out, format=fmt, quality=85)
+        out = io.BytesIO()
+        img.save(out, format="JPEG", quality=85)
         return out.getvalue()
     except Exception:
         return image_bytes
 
 
-def scan_sign(image_bytes: bytes, location: Location,
-              model: str = None) -> dict:
-    """
-    Returns dict with:
-      sign_text, extracted_rule, appears_official, search_keywords,
-      matching_citations, verified_against_code
-    """
+def _coerce(c: dict) -> Citation:
+    level = str(c.get("level") or "unknown").lower().strip()
+    if level not in ("city", "county", "state", "federal", "unknown"):
+        level = "unknown"   # Citation enum has no 'national'
+    try:
+        page = int(c.get("page_start") or 0)
+    except (TypeError, ValueError):
+        page = 0
+    return Citation(
+        section_id=str(c.get("section_id") or "?"),
+        section_name=str(c.get("section_name") or c.get("topic") or ""),
+        paraphrase=str(c.get("explanation") or ""),
+        level=level,
+        jurisdiction=str(c.get("jurisdiction") or ""),
+        source_url=str(c.get("source_url") or ""),
+        page_start=page,
+    )
+
+
+def analyze_photo(image_bytes: bytes, location: Location,
+                  model: str = None) -> dict:
+    """Returns: {scene, summary, laws:[{topic, explanation, citation}], retrieved}."""
     image_bytes = _maybe_resize(image_bytes)
     media_type = _detect_media_type(image_bytes)
     b64 = base64.standard_b64encode(image_bytes).decode("ascii")
     data_url = f"data:{media_type};base64,{b64}"
 
-    # OpenAI-compatible vision content blocks (works on OpenRouter).
-    sign_data = llm.call_tool(
-        system=SIGN_SYSTEM,
+    # Pass 1 — vision
+    scene_data = llm.call_tool(
+        system=SCENE_SYSTEM,
         user_content=[
-            {"type": "text", "text": "Read this sign and report its rule."},
+            {"type": "text", "text": "What's in this photo, and what laws might apply?"},
             {"type": "image_url", "image_url": {"url": data_url}},
         ],
-        tool=SIGN_READER_TOOL,
-        tool_name="report_sign",
+        tool=SCENE_TOOL,
+        tool_name="describe_scene",
         model=model,
-        max_tokens=1000,
+        max_tokens=700,
+    )
+    scene = str(scene_data.get("scene") or "").strip()
+    subjects = [str(s) for s in (scene_data.get("subjects") or []) if s]
+    queries = [str(q) for q in (scene_data.get("queries") or []) if q]
+    if not queries:
+        queries = subjects or ([scene] if scene else [])
+
+    # Retrieve law for each query (deduped)
+    hits, seen = [], set()
+    for q in queries[:4]:
+        for h in retrieve(q, location, k=5):
+            key = (h["meta"].get("section_id"), h["meta"].get("chunk_index"))
+            if key not in seen:
+                seen.add(key)
+                hits.append(h)
+    hits = hits[:12]
+
+    if not hits:
+        return {
+            "scene": scene or "We couldn't identify a clear subject in the photo.",
+            "summary": ("No specific local law was found in the database for what's "
+                        "in this photo. The relevant code may not be ingested yet."),
+            "laws": [],
+            "retrieved": [],
+        }
+
+    # Pass 2 — grounded plain-language laws
+    from .core import _format_context  # reuse the same law-block formatter
+    where = ", ".join(filter(None, [location.city, location.county, location.state])) or "your area"
+    user_msg = (
+        f"User location: {where}\n\n"
+        f"What's in the photo: {scene}\n"
+        f"Notable elements: {', '.join(subjects) if subjects else '(see description)'}\n\n"
+        f"Retrieved law sections:\n\n{_format_context(hits)}"
+    )
+    out = llm.call_tool(
+        system=LAWS_SYSTEM,
+        user_content=user_msg,
+        tool=LAWS_TOOL,
+        tool_name="relevant_laws",
+        model=model,
+        max_tokens=1600,
     )
 
-    # Cross-reference: RAG-search the extracted rule
-    matching_citations: list[Citation] = []
-    verified = False
-    search = sign_data.get("search_keywords") or sign_data.get("extracted_rule", "")
-    if search and location.state:
-        hits = retrieve(search, location, k=5)
-        # Only consider strong matches (low cosine distance)
-        strong = [h for h in hits if h["distance"] < 0.7]
-        for h in strong[:3]:
-            m = h["meta"]
-            where = ", ".join(filter(None, [m.get("city"), m.get("county"), m.get("state")]))
-            matching_citations.append(Citation(
-                level=m.get("level", "unknown"),
-                jurisdiction=where,
-                section_id=m.get("section_id", ""),
-                section_name=m.get("section_name", ""),
-                paraphrase=h["text"][:200],
-                source_url=m.get("source_url", ""),
-                page_start=int(m.get("page_start", 0) or 0),
-            ))
-        verified = len(strong) > 0
+    laws = []
+    for item in (out.get("laws") or []):
+        if not isinstance(item, dict):
+            continue
+        laws.append({
+            "topic": str(item.get("topic") or "").strip(),
+            "explanation": str(item.get("explanation") or "").strip(),
+            "citation": _coerce(item),
+        })
 
     return {
-        "sign_text": sign_data.get("sign_text", ""),
-        "extracted_rule": sign_data.get("extracted_rule", ""),
-        "appears_official": sign_data.get("appears_official", False),
-        "search_keywords": sign_data.get("search_keywords", ""),
-        "matching_citations": matching_citations,
-        "verified_against_code": verified,
+        "scene": scene,
+        "summary": str(out.get("summary") or "").strip(),
+        "laws": laws,
+        "retrieved": hits_to_retrieved(hits),
     }
+
+
+# Backwards-compatible alias (older callers/imports).
+scan_sign = analyze_photo

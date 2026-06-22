@@ -61,8 +61,24 @@ function LocationSheet({ open, onClose }) {
   );
 }
 
+// True on real phone-sized screens — we drop the simulated iPhone frame there
+// and let the app fill the viewport (the device mockup is desktop-only chrome).
+function useIsMobile() {
+  const q = '(max-width: 600px)';
+  const [m, setM] = React.useState(
+    typeof window !== 'undefined' && window.matchMedia(q).matches);
+  React.useEffect(() => {
+    const mq = window.matchMedia(q);
+    const on = () => setM(mq.matches);
+    mq.addEventListener ? mq.addEventListener('change', on) : mq.addListener(on);
+    return () => { mq.removeEventListener ? mq.removeEventListener('change', on) : mq.removeListener(on); };
+  }, []);
+  return m;
+}
+
 function App() {
   const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
+  const isMobile = useIsMobile();
   const [screen, setScreen] = React.useState(t.startScreen || 'onboarding');
   const [qid, setQid] = React.useState('ebike');
   const [ctx, setCtx] = React.useState(null);
@@ -204,19 +220,24 @@ function App() {
       view = <AskScreen onAsk={ask} onScan={() => setScreen('camera')} onOpenLoc={() => setLocOpen(true)} onNav={go} />;
   }
 
+  const inner = (
+    <div className="ll-device-inner">
+      {view}
+      <LocationSheet open={locOpen} onClose={() => setLocOpen(false)} />
+    </div>
+  );
+
   return (
-    <div className="ll-stage">
-      <div className="ll-fit">
+    <div className={'ll-stage' + (isMobile ? ' ll-stage-mobile' : '')}>
+      <div className={isMobile ? 'll-fit-mobile' : 'll-fit'}>
         <div className="ll-root" style={window.themeStyle(t.theme)} data-screen-label={screen}>
-          <IOSDevice dark={statusDark}>
-            <div className="ll-device-inner">
-              {view}
-              <LocationSheet open={locOpen} onClose={() => setLocOpen(false)} />
-            </div>
-          </IOSDevice>
+          {isMobile
+            ? <div className="ll-mobile">{inner}</div>
+            : <IOSDevice dark={statusDark}>{inner}</IOSDevice>}
         </div>
       </div>
 
+      {!isMobile && (
       <TweaksPanel>
         <TweakSection label="Brand & visual style" />
         <TweakSelect label="Theme" value={t.theme}
@@ -229,6 +250,7 @@ function App() {
           options={SCREEN_OPTIONS.map(s => ({ value: s, label: s }))}
           onChange={(v) => setScreen(v)} />
       </TweaksPanel>
+      )}
     </div>
   );
 }

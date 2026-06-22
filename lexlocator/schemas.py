@@ -150,6 +150,26 @@ class SignScanResponse(BaseModel):
     )
 
 
+class PhotoLaw(BaseModel):
+    topic: str = Field(description="Short plain-language title of the law.")
+    explanation: str = Field(description="1-2 sentences, simple language, tied to the photo.")
+    citation: Citation
+
+
+class PhotoScanResponse(BaseModel):
+    scene: str = Field(description="What the AI sees in the photo, plain English.")
+    summary: str = Field(description="Plain-language overview of the legal picture.")
+    laws: list[PhotoLaw] = Field(default_factory=list)
+    location: Location
+    retrieved: list[RetrievedSection] = []
+    timestamp_utc: str
+    disclaimer: str = (
+        "This is legal information, not legal advice. The AI describes the photo "
+        "and lists laws from this app's dataset that may apply — it can miss "
+        "context or rules not yet ingested. Verify before acting."
+    )
+
+
 class JurisdictionResponse(BaseModel):
     location: Location
     covered_levels: list[str]      # which levels we have data for
